@@ -1,0 +1,1 @@
+Access postgres via cli: `docker exec -it my_postgres psql -U postgres`

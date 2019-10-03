@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.Optional;
 
@@ -32,6 +33,14 @@ public class AccessingDataJpaApplication {
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
 			for (Customer customer : repository.findAll()) {
+				log.info(customer.toString());
+			}
+			log.info("");
+
+			// fetch customer page
+			log.info("Customers found with findAll(page):");
+			log.info("-------------------------------");
+			for (Customer customer : repository.findAll(PageRequest.of(1, 2))) {
 				log.info(customer.toString());
 			}
 			log.info("");

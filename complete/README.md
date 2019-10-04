@@ -1,1 +1,2 @@
-Access postgres via cli: `docker exec -it my_postgres psql -U postgres`
+1. Spin up docker: `docker-compose up -d`
+1. Run: `./mvnw spring-boot:run`

@@ -1,5 +1,7 @@
 package com.example.accessingdatajpa;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,19 +15,21 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    private OffsetDateTime creation;
 
     protected Customer() {}
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.creation = OffsetDateTime.now();
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+                "Customer[id=%d, firstName='%s', lastName='%s', creation='%s']",
+                id, firstName, lastName, creation.toString());
     }
 
 	public Long getId() {
@@ -39,4 +43,9 @@ public class Customer {
 	public String getLastName() {
 		return lastName;
 	}
+
+  public OffsetDateTime getCreation() {
+    return creation;
+  }
+
 }

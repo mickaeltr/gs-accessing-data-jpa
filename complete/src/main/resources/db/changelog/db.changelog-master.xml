@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="createTable-customer" author="">
+        <createSequence sequenceName="hibernate_sequence"/>
+        <createTable tableName="customer">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="customer_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+
+            <!-- For OffsetDateTime: -->
+            <!-- TIMESTAMP WITH TIMEZONE is accepted with org.postgresql.Driver (as specified in https://jdbc.postgresql.org/documentation/head/8-date-time.html) -->
+            <!-- TODO TIMESTAMP WITH TIMEZONE is not accepted with com.impossibl.postgres.jdbc.PGDriver -->
+            <column name="creation" type="TIMESTAMP WITH TIMEZONE"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
